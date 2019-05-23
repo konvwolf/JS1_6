@@ -2,10 +2,10 @@
 
 let buttons = document.querySelectorAll(".toBasket"); // массив кнопок
 let productsArr = []; // определяю массив для будущих объектов товаров
-let basket = document.querySelector(".basketInnings"); // содержима блока корзины
+let basket = document.querySelector(".basketInnings"); // содержимое блока корзины
 
 for (let i = 0; i < buttons.length; i++) {
-    buttons[i].addEventListener("click", function (e) {
+    buttons[i].addEventListener("click", function (e) { // вешаю обработчики на кнопки товаров
         buttons.buttonNumber = i;
         makeProductArray(e);
     });
@@ -19,7 +19,8 @@ for (let i = 0; i < buttons.length; i++) {
  */
 function getProduct(e) {
     let product = {
-        productId: buttons.buttonNumber, // номер кнопки в коллекции buttons
+        productId: buttons.buttonNumber, /* номер кнопки в коллекции buttons (по нему буду определять,
+            что добавляется один и тот же товар) */
         name: e.target.parentNode.querySelector("h2").innerText, // получаю название товара
         price: e.target.parentNode.querySelector(".price").innerText, // получаю цену товара
         totalPrice: e.target.parentNode.querySelector(".price").innerText, // назначаю цену "итого"
@@ -37,7 +38,7 @@ function makeProductArray(arg) {
     let productExists = productsArr.find(id => id.productId == buttons.buttonNumber);
     // наличие товара в массиве объектов
 
-    if (productsArr.length == 0 || !productExists) { // если массив пустой
+    if (productsArr.length == 0 || !productExists) { // если массив пустой или такой товар еще не добавлялся
         productsArr.push(new getProduct(arg)); // добавляю объект
     } else if (productExists) {
         // если в массиве уже есть объект, которому соответствует номер нажатой кнопки
@@ -61,7 +62,7 @@ function updateBasket() {
     let basketTotals = 0; // итого
     let basketDivs = basket.querySelectorAll("div"); // дивы в блоке корзины
     for (let j = 0; j < basketDivs.length; j++) {
-        basket.querySelector("div").remove(); // чищу все все дивы в корзине, чтобы при добавлении товара корзина обновлялась
+        basket.querySelector("div").remove(); // тру все все дивы в корзине, чтобы при добавлении товара корзина обновлялась
     }
     for (let i = 0; i < productsArr.length; i++) {
         basket.insertBefore(document.createElement("div"), document.querySelector(".basketTotal")).innerHTML =
