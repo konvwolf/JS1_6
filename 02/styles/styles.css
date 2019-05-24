@@ -1,0 +1,101 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 90%;
+    margin: 0 auto;
+    box-shadow: 0 0 5px black;
+}
+
+.headerMenu {
+    background-color: lightgray;
+    padding: 20px 0 20px 0;
+}
+
+.basket {
+    position: relative;
+    margin-left: 80%;
+    list-style: none;
+    cursor: pointer;
+    background-color: darkgray;
+    width: 10%;
+    text-align: center;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.basketInnings {
+    position: absolute;
+    left: -50%;
+    visibility: hidden;
+    opacity: 0;
+    transition: .5s;
+    z-index: 1;
+    background-color: white;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    box-shadow: 0 0 5px black;
+    margin-top: 15px;
+    width: 200%;
+}
+
+.basket:hover .basketInnings {
+    visibility: visible;
+    opacity: 1;
+}
+
+.basketTotal {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.basketInnings .quantity {
+    float: right;
+}
+
+.basketInnings div {
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+.products {
+    clear: both;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 50px;
+}
+
+.product {
+    width: calc(100% / 3 - 20px);
+}
+
+.product h2 {
+    margin-bottom: 20px;
+}
+
+.product img {
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.product h3 {
+    font-size: 36px;
+    margin-bottom: 15px;
+}
+
+.product button {
+    background-color: coral;
+    border: none;
+    padding: 10px;
+    font-size: 18px;
+    font-weight: 600;
+    box-shadow: 5px 5px 5px black;
+}
+
+.product button:active {
+    box-shadow: none;
+}
